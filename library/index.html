@@ -15,7 +15,37 @@
         <a href="../animal/index.html">Animal</a>
     </nav>
     <main>
-        Test
+        <b>Task:</b>
+        <p>
+            <b>Rəqəmsal Kitabxana Sistemi</b><br>
+            Bu tapşırıqda sizdən bir kitabxana idarəetmə sistemi qurmaq tələb olunur. Eyni məntiqi iki fərqli yanaşma ilə reallaşdırmalısınız: <b>Constructor Function</b> və <b>ES6 Class</b>.<br><br>
+
+            <b>Tapşırığın Şərtləri:</b><br>
+            Hər iki variantda yaradılan obyektlər aşağıdakı xüsusiyyətlərə və metodlara malik olmalıdır:<br><br>
+
+            <b>Properties (Xüsusiyyətlər):</b><br>
+            <b>title:</b> Kitabın adı.<br>
+            <b>author:</b> Müəllifin adı.<br>
+            <b>isAvailable:</b> Kitabın kitabxanada olub-olmadığını bildirən boolean dəyər (ilkin dəyər: true).<br>
+            <b>dueDate:</b> Kitabın qaytarılmalı olduğu tarix (ilkin dəyər: null).<br><br>
+
+            <b>Methods (Metodlar):</b><br>
+            <b>borrowBook():</b><br>
+            Əgər kitab kitabxanadadırsa (<b>isAvailable</b> true), onu götürülmüş hesab etməli (false etməli) və <b>dueDate</b> cari tarixdən 14 gün sonranı təyin etməlidir.<br>
+            Əgər kitab artıq götürülübsə, konsola müvafiq xəbərdarlıq çıxarmalıdır.<br><br>
+
+            <b>returnBook():</b><br>
+            Kitabın statusunu yenidən əlçatan (true) etməli və <b>dueDate</b> dəyərini null olaraq sıfırlamalıdır.<br><br>
+
+            <b>isOverdue():</b><br>
+            Kitabın qaytarılma tarixinin keçib-keçmədiyini yoxlamalıdır. Cari tarixlə <b>dueDate</b>-i müqayisə edərək true və ya false qaytarmalıdır.<br><br>
+
+            <b>Tələblər:</b><br>
+            <b>Variant A (Constructor Function):</b> Obyekt strukturunu funksiya daxilində qurun, lakin yaddaş effektivliyi üçün metodları mütləq <b>.prototype</b> üzərindən əlavə edin.<br>
+            <b>Variant B (ES6 Class):</b> Eyni funksionallığı modern <b>class</b> sintaksisindən və <b>constructor</b> metodundan istifadə edərək yazın.<br><br>
+
+            <b>Qeyd:</b> Kodunuzun işləməsini yoxlamaq üçün ən azı 2 fərqli kitab obyekti yaradın və metodları çağıraraq nəticələri konsolda izləyin.
+        </p>
     </main>
     <footer>
         <p>&copy; 2026 My Test Js about Prototype</p>

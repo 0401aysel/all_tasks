@@ -15,7 +15,37 @@
         <a href="../library/index.html">Library</a>
     </nav>
     <main>
-        Test
+        <p>
+            <b>Virtual Ev Heyvanı Kolleksiyası (Tamagotchi Farm)</b><br>
+            Təsəvvür edin ki, istifadəçinin virtual ev heyvanları var. Bu heyvanlar acıyır, oynayır və enerjilərini itirirlər. Tələbəniz həm <b>Constructor Function</b>, həm də <b>ES6 Class</b> variantında bir "Pet" (Ev heyvanı) sistemi qurmalıdır.<br><br>
+
+            <b>Properties (Xüsusiyyətlər):</b><br>
+            <b>name:</b> Heyvanın adı.<br>
+            <b>type:</b> Növü (məsələn: "Pişik", "Əjdaha", "Robot").<br>
+            <b>hunger:</b> Acılıq səviyyəsi (0-100 arası, ilkin dəyər: 50).<br>
+            <b>energy:</b> Enerji səviyyəsi (0-100 arası, ilkin dəyər: 100).<br>
+            <b>skills:</b> Heyvanın bildiyi bacarıqlar (boş bir massiv []).<br><br>
+
+            <b>Methods (Metodlar):</b><br>
+            <b>feed():</b><br>
+            Heyvanı yedizdirir. <b>hunger</b> dəyərini 20 vahid azaldır (0-dan aşağı düşə bilməz), <b>energy</b> dəyərini 5 vahid artırır.<br><br>
+
+            <b>play():</b><br>
+            Heyvanla oynayır. <b>energy</b> dəyərini 20 vahid azaldır, <b>hunger</b> dəyərini 10 vahid artırır.<br>
+            Mürəkkəb şərt: Əgər <b>energy</b> 20-dən aşağıdırsa, heyvanın oynamağa halı yoxdur, konsola "Çox yorğundur, yatmalıdır!" mesajı çıxmalıdır.<br><br>
+
+            <b>learnSkill(newSkill):</b><br>
+            Verilən yeni bacarığı <b>skills</b> massivinə əlavə edir. Amma eyni bacarıq artıq varsa, "Bu bacarığı artıq bilir!" mesajı versin.<br><br>
+
+            <b>sleep():</b><br>
+            Heyvan yatır. <b>energy</b> tam bərpa olunur (100 olur), amma yatarkən <b>hunger</b> 30 vahid artır.<br><br>
+
+            <b>Tələblər:</b><br>
+            <b>Variant A (Constructor Function):</b> Bütün metodları <b>.prototype</b> daxilində yazılmalıdır.<br>
+            <b>Variant B (ES6 Class):</b> Modern sintaksisdən istifadə etməlidir.<br><br>
+
+            <b>Qeyd:</b> Kodunuzun işləməsini yoxlamaq üçün ən azı 2 fərqli heyvan obyekti yaradın və metodları çağıraraq nəticələri konsolda izləyin.
+        </p>
     </main>
     <footer>
         <p>&copy; 2026 My Test Js about Prototype</p>
