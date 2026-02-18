@@ -25,8 +25,10 @@ myAnimal.d=function(a,b){return a+b;}
 
 console.log(myAnimal)
 Animal {name: 'juzzy', type: 'dog', hunger: 19, energy: 24, skills: Array(2), …}d: ƒ (a,b)length: 2name: ""prototype: {}arguments: nullcaller: null[[FunctionLocation]]: VM422:1[[Prototype]]: ƒ ()[[Scopes]]: Scopes[2]energy: 24hunger: 19name: "juzzy"newskill: "aysel"skills: (2) ['sleep', 'jump']type: "dog"[[Prototype]]: 
+
 myAnimal.d(3,4)
 7
+
 myAnimal
 Animal {name: 'juzzy', type: 'dog', hunger: 19, energy: 24, skills: Array(2), …}d: ƒ (a,b)energy: 24hunger: 19name: "juzzy"newskill: "aysel"skills: (2) ['sleep', 'jump']type: "dog"[[Prototype]]: Object
 
