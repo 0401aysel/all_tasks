@@ -1,1 +1,95 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Test Library system task</h1>
+    </header>
+    <nav>
+        <a href="../">Tasks</a>
+    </nav>
+    <main>
+        <div class="tasks">
+            <p>const department = {
+                manager: 5000,
+                developer: 4500,
+                designer: 3200,
+                intern: 1200,
+                hr: 2800
+            };
+            </p>
+            <b>Tapşırıq Şərtləri:</b>
+            <p>asagidakilarin her biri ucun funksiya yazin.</p>
+            <p>bütün vəzifələrin (key) adını böyük hərflərlə konsola çıxarın. (mes: handlePositions funksiyasi)</p>
+            <p> bütün maaşların cəmini (totalSalary) hesablayın.</p>
+            <p>maaşı 3000-dən yuxarı olan işçilərin siyahısını ("Vəzifə: Maaş" formatında) çap edin.</p>
+            <button id="task1">Task1</button>
+        </div>
+        <div class="tasks">
+           <p> Mağazada məhsullar və onların qiymətləri obyekt şəklindədir. Sizin işiniz bu datanı analiz edib yeni "İnflyasiya Hesabatı" hazırlamaqdır.</p>
+           <p>const inventory = {
+            apple: 2.5,
+            banana: 1.8,
+            milk: 3.2,
+            bread: 0.8,
+            coffee: 12.5
+            };
+            </p>
+            <b>Tapşırıq Şərtləri:</b>
+            <p>bu tapsirigi class vasitesi ile edin.</p>
+            <p>Qiymət Artımı:  bütün məhsulların qiymətini 20% artırın və yeni bir inflatedInventory obyekti yaradın.</p>
+            <p>Filtrləmə: qiyməti (artımdan sonra) 5 AZN-dən baha olan məhsulları tapın və onların adlarını bir massivə (expensiveItems) yığın.</p>
+            <p>Cəm Hesablama:  bütün inventarın ümumi dəyərini tapın.</p>
+            <p>Formatlama: Konsola belə bir mesaj çıxarın: "Mağazada [sayı] növ məhsul var. Ən baha məhsul: [adı] - [qiyməti] AZN."</p>
+            <button id="task2">Task2</button>
+        </div>
+        <div class="tasks">
+            <p>Tapşırıq: call, apply və bind (Context Manipulation)</p>
+            <p>Bu mövzu tələbələr üçün bir az qarışıq ola bilər, ona görə də ssenarini "Supermarket Kassası" üzərində quraq.</p>
+            <p>Bir cashier obyektiniz var. Bu obyektin calculateTotal adlı metodu var. Amma bu metodu fərqli müştəri obyektləri üçün istifadə etməlisiniz.</p>
+            <p>const cashier = {
+            calculateTotal: function(tax, discount) {
+                const total = this.price + (this.price * tax) - discount;
+                console.log(${this.customerName} üçün yekun məbləğ: ${total} AZN);
+            }
+            };</p>
+            <p>const customer1 = { customerName: "Aysel", price: 100 };</p>
+            <p>const customer2 = { customerName: "Murad", price: 250 };</p>
+            <p>Tapşırıq Şərtləri:</p>
+            <p>her biri ucun funksiya yazin.</p>
+            <p>calculateTotal funksiyasını customer1 üçün çağırın (Parametrlər: tax = 0.18, discount = 5).</p>
+            <p>calculateTotal funksiyasını customer2 üçün çağırın (Parametrlər massiv şəklində: [0.18, 20]).</p>
+            <p>customer1 üçün daimi bir ödəniş funksiyası yaradın (const payForAysel = ...) və sonra həmin funksiyanı tax = 0.18 və discount = 10 ilə çağırın.</p>
+            <button id="task3">Task3</button>
+        </div>
+        <div class="tasks">
+            <p>Tapşırıq: Obyekt İterasiyası (Looping through Objects)</p>
+            <p>Bu tapşırıqda tələbə bir şirkətin departamentindəki maaşları analiz etməlidir.</p>
+            <p>Ssenari: Bir salaries obyektiniz var. Siz bu obyekti dövr edərək bəzi statistikalar çıxarmalısınız.</p>
+            <p>const department = {
+                manager: 5000,
+                developer: 4500,
+                designer: 3200,
+                intern: 1200,
+                hr: 2800
+                };
+                </p>
+            <p>Tapşırıq Şərtləri:</p>
+            <p>Object.keys() istifadə edərək bütün vəzifələrin (key) adını böyük hərflərlə konsola çıxarın.</p>
+            <p>Object.values() istifadə edərək bütün maaşların cəmini (totalSalary) hesablayın.</p>
+            <p>for...in dövrü vasitəsilə maaşı 3000-dən yuxarı olan işçilərin siyahısını ("Vəzifə: Maaş" formatında) çap edin.</p>
+            <p>Object.entries() istifadə edərək obyektin strukturunu dəyişib yeni bir massiv yaradın (Məsələn: [["manager", 5000], ...]).</p>
+            <button id="task4">Task4</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Test Task</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
