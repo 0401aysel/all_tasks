@@ -91,6 +91,25 @@ document.getElementById("task2").onclick = function() {
     upAmount.message();
 };
 
+const customer1 = { customerName: "Aysel", price: 100 };
+
+const customer2 = { customerName: "Murad", price: 250 };
+
+const cashier = {
+    calculateTotal: function(tax, discount) {
+        const total = this.price + (this.price * tax) - discount;
+        console.log(`${this.customerName} üçün yekun məbləğ: ${total} AZN); `)
+    } 
+};
+
+calculateTotal1 = cashier.calculateTotal.bind(customer1,tax = 0.18, discount = 5);
+const payForCostumer = cashier.calculateTotal.bind(customer1);
+document.getElementById("task3").onclick = function() {
+    calculateTotal1();
+    cashier.calculateTotal.apply(customer2,[0.18, 20]);
+    payForCostumer(0.18,5)
+};
+
 function keys(array){
     for( key in array){
         console.log(key.toUpperCase());
@@ -115,9 +134,6 @@ function UpperSalary(array){
 function changestructure(array){
     return Object.entries(array);
 }
-document.getElementById("task3").onclick = function() {
-    console.log('test3')
-};
 
 document.getElementById("task4").onclick = function() {
     console.log(keys(department));
