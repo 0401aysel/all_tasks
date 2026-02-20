@@ -91,11 +91,37 @@ document.getElementById("task2").onclick = function() {
     upAmount.message();
 };
 
-
+function keys(array){
+    for( key in array){
+        console.log(key.toUpperCase());
+    }
+}
+function sumSalary(array){
+    let sum = 0;
+    for( key in array){
+        sum += array[key];
+    }
+    return sum;
+}
+function UpperSalary(array){
+    let upSalary = [];
+    for( key in array){
+        if(array[key] > 3000){
+            upSalary[key]=array[key];
+        }
+    }
+    return upSalary;
+}
+function changestructure(array){
+    return Object.entries(array);
+}
 document.getElementById("task3").onclick = function() {
     console.log('test3')
 };
 
 document.getElementById("task4").onclick = function() {
-    console.log('test4')
+    console.log(keys(department));
+    console.log(sumSalary(department));
+    console.log(UpperSalary(department));
+    console.log(changestructure(department));
 };
