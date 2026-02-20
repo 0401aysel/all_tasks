@@ -35,9 +35,62 @@ document.getElementById("task1").onclick = function() {
     console.log(MinPayment(department));
 };
 
+
+const inventory = { apple: 2.9, banana: 1.8, milk: 3.2, bread: 0.8, coffee: 12.5 };
+
+class changeAmount{
+    constructor(array = []){
+        this.array = array;
+    }
+    upAmount(){
+        const inflatedInventory = [];
+        for(const [key,value] of Object.entries(this.array)){
+            inflatedInventory[key] = value*120/100;
+        }
+        return inflatedInventory;
+    }
+    expensive(){
+        const expensiveItems=[];
+        for(const [key,value] of Object.entries(this.array)){
+            if(value>3){
+                expensiveItems.push(key);
+            }
+        }
+        return expensiveItems;
+    }
+    sum(){
+        let sum =0;
+        for(let value of Object.values(this.array)){
+            sum +=value;
+        }
+        return sum;
+    }
+    message(){
+        let length = Object.keys(this.array).length;
+        let maxValue = Math.max(...Object.values(this.array));
+        let name = '';
+        for(const [key,value] of Object.entries(this.array)){
+            if(maxValue == value ){
+                name = key;
+            }
+        }
+        console.log(`Magazada ${length} nov mehsul var ve en bahali mehsul: ${name} : ${maxValue}`);
+    }
+}
+
 document.getElementById("task2").onclick = function() {
-    console.log('test2')
+    newTask2 = new changeAmount(inventory);
+    const upAmount = new changeAmount(newTask2.upAmount());
+    console.log(`ilkin array :`);
+    console.log(inventory);
+    console.log(`20% artim ile array :`);
+    console.log(upAmount);
+    console.log(`3 AZN-den baha olanlar :`);
+    console.log(upAmount.expensive());
+    console.log(`cem :`);
+    upAmount.message();
 };
+
 
 document.getElementById("task3").onclick = function() {
     console.log('test3')
