@@ -44,3 +44,7 @@ button{
     padding: 10px 30px;
     background: transparent;
 }
+#task1{
+    font-size: 18px;
+    width: 100%;
+}
