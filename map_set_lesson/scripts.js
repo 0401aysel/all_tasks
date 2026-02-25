@@ -14,3 +14,20 @@ function cleanText(text){
 document.getElementById("task1").addEventListener("input", function(){
     cleanText(this.value);
 });
+
+const p1 = {name: "Laptop",price: 1500};
+const p2 = {name: "Notebook",price: 3500};
+const p3 = {name: "Maus",price: 150};
+
+let productPrices = new Map();
+productPrices.set(p1.name,p1.price);
+productPrices.set(p2.name,p2.price);
+productPrices.set(p3.name,p3.price);
+
+function updatePrice(productObj, newPrice){
+    productPrices.set(productObj,newPrice);
+    return productPrices;
+}
+
+console.log(updatePrice('Laptop',900));
+
