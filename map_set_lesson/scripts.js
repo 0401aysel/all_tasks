@@ -1,5 +1,4 @@
-let txt='Salam MENIM adim AYselDir, hemcinin, sinif yoldasimin adi ayseldir hemcinin qrup yoldasimin adi ayseldir .'
-
+//           task 1            //
 function cleanText(text){
     let words=text.trim().split(' ');
     
@@ -15,6 +14,7 @@ document.getElementById("task1").addEventListener("input", function(){
     cleanText(this.value);
 });
 
+//           task 2           //
 const p1 = {name: "Laptop",price: 1500};
 const p2 = {name: "Notebook",price: 3500};
 const p3 = {name: "Maus",price: 150};
@@ -31,3 +31,29 @@ function updatePrice(productObj, newPrice){
 
 console.log(updatePrice('Laptop',900));
 
+
+
+//           task 3            //
+const classA = ["Ali", "Aysel", "Murad", "Ali", "Aysel", "Murad","Shelale"];
+const classB = ["Murad", "Leyla", "Ali", "Shelale", "Shelale"];
+
+let newA = new Set(classA);
+let newB = new Set(classB);
+
+let commonStudents = new Set();
+
+for(value of newA.values()){
+    if( newB.has(value) ){
+       commonStudents.add(value); 
+    }
+}
+
+console.log(commonStudents);
+
+
+// task3 - with filter  // 
+
+let newClass = classB.filter( student => newA.has(student));
+
+let students = new Set(newClass);
+console.log(students);
