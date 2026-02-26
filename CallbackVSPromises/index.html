@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Callback vs Promises</h1>
+    </header>
+    <nav>
+        <a href="../">Tasks</a>
+    </nav>
+    <main>
+        <div class="tasks">
+            <p>Bir kafe üçün proqram yazırsınız. Müştəri qəhvə sifariş verir.</p>
+
+            <p>sifarisVer(miqdar) adlı bir funksiya yaradın. Bu funksiya yeni bir Promise qaytarmalıdır.</p>
+
+            <p>Qəhvənin hazırlanması 3 saniyə çəkir (setTimeout istifadə edin).</p>
+
+            <p>Məntiq:</p>
+
+            <p>Əgər miqdar 5-dən çoxdursa, Promise reject olunsun: "Bağışlayın, eyni anda maksimum 5 qəhvə hazırlaya bilərik."</p>
+
+            <p>Əgər miqdar 0-dırsa, Promise reject olunsun: "Zəhmət olmasa miqdar qeyd edin."</p>
+
+            <p>Əgər hər şey qaydasındadırsa, 3 saniyə sonra resolve olunsun: "${miqdar} ədəd qəhvəniz hazırdır!"</p>
+
+            <p>Tələb: Bu funksiyanı həm .then()/.catch(), həm də async/await ilə çağırıb nəticəni konsolda göstərin.</p>
+        </div>
+        <div class="tasks">
+            <p>
+                function sifarisVer(yemek, callback) {
+                <br>  console.log(${yemek} sifariş qəbul edildi...);
+                <br>  setTimeout(() => {
+                <br>    callback(yemek);
+                <br>  }, 2000);
+                }
+                </p>
+                <p>
+                function hazirla(yemek, callback) {
+                <br>  console.log(${yemek} hazırlanır...);
+                <br>  setTimeout(() => {
+                <br>    callback(${yemek} hazırdır!);
+                <br>  }, 3000);
+                }
+                </p>
+                <p>
+                sifarisVer("Pizza", (yemek) => {
+                <br>  hazirla(yemek, (mesaj) => {
+                <br>    console.log(mesaj);
+                <br>    console.log("Afiyət olsun!");
+                <br>  });
+                });
+                </p>
+                <p>Callback hell ile funcksiyani call et. Daha sonra promise cevirib then ve catch istifade ederek call et.</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 My Callback and Promises Task</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

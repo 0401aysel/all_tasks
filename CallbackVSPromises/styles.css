@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    background: #b5b5b5;
+    margin-top: 0px;
+}
+footer{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+nav{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+nav a{
+    color: #05056f;
+    margin-right: 20px;
+    text-decoration: none;
+    border: 1px dotted #05056f;
+    padding: 7px;
+}
+p{
+    font-size: 18px;
+    line-height: 32px;
+}
+
+main{
+    display:flex;
+    flex-wrap:wrap;
+    margin:auto;
+    width: max-content; 
+}
+.tasks{
+    max-width:400px;
+    margin: 20px;
+    border: 1px dotted #05056f;
+    padding:20px;
+}
+button{
+    padding: 10px 30px;
+    background: transparent;
+}
+#task1{
+    font-size: 18px;
+    width: 100%;
+}
