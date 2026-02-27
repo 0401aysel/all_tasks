@@ -29,11 +29,11 @@ function orderNewCoffee(amount, callback){
     });
 }
 
-orderNewCoffee(3,(err,callback)=>{
+orderNewCoffee(3,(err,result)=>{
     if(err){
         console.log(err);
     }else{
-        console.log(callback);
+        console.log(result);
     }
 });
 
