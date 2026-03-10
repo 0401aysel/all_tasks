@@ -1,7 +1,11 @@
 let api ='https://jsonplaceholder.typicode.com/users';
+let loading = document.getElementById('loading');
+let users = document.getElementById('users');
+let userData = document.getElementById('user-data');
 
 async function getUsers(){
-    console.log("API call")
+    loading.style.display='block';
+
     try{
         let response = await fetch(api,{
             method:'GET',
@@ -18,54 +22,86 @@ async function getUsers(){
         }
     }catch(error){
         console.log(error);
+    }finally{
+        loading.style.display='none';
     }
 };
+
+async function getUserDataById(id){
+    try{
+
+        let response = await fetch(api + `/${id}`);
+        let data = await response.json();
+
+        return data;
+    }catch(error){
+        console.log(error);
+    }finally{
+        console.log('final');
+    }
+}
+
+function handleUserData(currentData){
+    userData.innerHTML = '';
+
+    for(let [key,value] of Object.entries(currentData)){
+        userData.innerHTML +='<br>';
+        if(typeof(value) === 'object'){
+            userData.innerHTML += `${key}::`;
+            for( let [key,newValue] of Object.entries(value)){
+                if( typeof(newValue) === 'object'){
+                    userData.innerHTML += `~${key}::`;
+                    for(let [key,lastValue] of Object.entries(newValue)){
+                        userData.innerHTML += `${key}::${lastValue}`;
+                    }
+                }else{
+                    userData.innerHTML += `${key}:${newValue}`;
+                }
+            }
+        }else{
+            userData.innerHTML += `${key}:${value}`;
+        }
+    };
+    userData.innerHTML += '<br><br><label for="setData">Yeni Data:</label><input id="setData"></input><button type="submit" id="sendData">Gonder</button>';
+
+    document.getElementById('sendData').addEventListener('click', async ()=>{
+        let data = document.getElementById('setData').value;
+        try{
+            let newData = await fetch(`${api}/${currentData.id}`,{
+                method:'PUT',
+                headers:{
+                    'Content-type':'application/json',
+                },
+                body:JSON.stringify({...currentData,newData:data})
+            });
+            let updatedData = await newData.json();
+    
+            handleUserData(updatedData);
+            console.log(updatedData);
+        }catch(error){
+            console.log(error)
+        }
+    });
+}
 
 datas = getUsers();
 
 datas.then(res=>{
-    let users = document.getElementById('users');
-
     res.forEach(user=>{
         let newChildElement = document.createElement('li');
-        
+
+        newChildElement.dataset.id=user.id;
+
         newChildElement.innerHTML= user.name;
         users.appendChild(newChildElement);
-
-        newChildElement.addEventListener('click',()=>{
-            
-            const elementsWithClass = document.querySelectorAll('.activeUser');
-
-            elementsWithClass.forEach(element => {
-                element.classList.remove('activeUser');
-            });
-            
-            newChildElement.classList.add("activeUser");
-            
-            let userData = document.getElementById('user-data');
-            userData.innerHTML='';
-
-           for(let [key,values] of Object.entries(user) ){
-
-                let innerData = document.createElement('li');
-
-                if(typeof(values) === 'object'){
-                    let newValue = `<span class="item-data-key">${key}</span>:`;
-                    for(let value of Object.values(values)){
-                        if( typeof(value) === 'object'){
-                            for(let item of Object.values(value)){
-                                newValue +=' ' + item;
-                            }
-                        }else{
-                            newValue +=' ' + value;
-                        }                
-                        innerData.innerHTML = newValue;
-                    }
-                }else{
-                    innerData.innerHTML = `<span class="item-data-key">${key}</span>: ${values}`;
-                }
-                userData.appendChild(innerData);
-            };
-        });
     });
+});
+
+users.addEventListener('click',async (e)=>{
+
+    let id = e.target.dataset.id;
+
+    let currentData = await getUserDataById(id);
+    
+    handleUserData(currentData);
 });
