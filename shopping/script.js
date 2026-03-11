@@ -11,7 +11,7 @@ basket.addEventListener('click',()=>{
 });
 
 close.addEventListener('click',()=>{
-    cart.classList.toggle('show');
+    cart.classList.remove('show');
 });
 
 add_to_basket.forEach(added => {
