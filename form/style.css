@@ -53,6 +53,7 @@ form{
     width:320px;
     margin:10px;
     padding:20px;
+    box-shadow: 0px 0px 4px 2px grey;
     background: #d6d6d6;
 }
 .task p{
