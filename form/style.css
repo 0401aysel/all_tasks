@@ -1,0 +1,60 @@
+body{
+    margin: 0;
+    padding: 40px;
+    background: #ece7e7;
+}
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+.task-form h1{
+    color:#727272;
+}
+.task-form input[type='text']{
+    margin-bottom: 20px;
+    width: 400px;
+    height: 20px;
+    font-size: 16px;
+}
+.task-form label{
+    font-size: 16px;
+}
+.task-form button{
+    border: none;
+    background: grey;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 2px;
+}
+.task-form input[type="checkbox"]{
+    margin-bottom: 20px;
+}
+.task-form input[type="date"]{
+    margin-bottom: 20px;
+}
+.task-form .flex{
+    display: flex;
+    align-items: center;
+    margin-bottom:20px;
+}
+form{
+    width: max-content;
+    padding: 30px;
+    box-shadow: 3px -1px 18px 19px #dadddc;
+}
+.tasks{
+    display: flex;
+    flex-wrap: wrap;
+}
+.task-list-title{
+    padding-top:40px;
+}
+.task{
+    width:320px;
+    margin:10px;
+    padding:20px;
+    background: #d6d6d6;
+}
+.task p{
+    font-size: 18px;
+}
