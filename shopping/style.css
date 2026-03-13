@@ -108,7 +108,7 @@ header h1{
     padding:0 30px;
 }
 .cart-items{
-    height: calc(100% - 150px);
+    height: calc(100% - 210px);
     overflow: auto;
 }
 .counter .increement{

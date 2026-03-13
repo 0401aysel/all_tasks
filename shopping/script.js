@@ -1,64 +1,55 @@
 let basket = document.querySelector('.basket');
 let cart = document.querySelector('.cart');
 let close = document.querySelector('.close');
-let add_to_basket = document.querySelectorAll('.add');
-let basket_count = document.querySelector('.basket-count');
+let addToBasket = document.querySelectorAll('.add');
+let basketCount = document.querySelector('.basket-count');
+let total = document.getElementById('total');
+let totalPrice= document.getElementById('total-price');
 let list = document.querySelector('.cart-items');
+
 let products = {};
 
+handleListProducts();
+handleBasketCount();
+
 basket.addEventListener('click',()=>{
-    cart.classList.toggle('show');
+    cart.classList.add('show');
 });
 
 close.addEventListener('click',()=>{
     cart.classList.remove('show');
 });
 
-add_to_basket.forEach(added => {
-    added.addEventListener('click',(event)=>{
-        handleAddToCart(event);
+addToBasket.forEach(item =>{
+    item.addEventListener('click',(e)=>{
+        handleAddToCart(e.target.parentElement);
     });
 });
 
-function handleRemove(id){
-    
-    delete products[id];
-
-    listBasketElements();
+function handleGetProducts(){
+    let storage = localStorage.getItem('basket');
+    return storage ? JSON.parse(storage) : {};
 }
 
-function handleAddToCart(event){
-    let product = event.target.parentElement;
+function handleSetProducts(products){
+    localStorage.setItem('basket',JSON.stringify(products));
+}
+
+function handleAddToCart(product){
+    products = handleGetProducts();
     let id = product.getAttribute('data-id');
-    let price = product.querySelector('.price').innerHTML;
-    let img = product.querySelector('img').getAttribute('src'); 
-    let title = product.querySelector('.product-title').innerHTML;
-
-    if(!Object.keys(products).includes(id)){
-        products[id]={
-            title: title,
-            img:img,
-            count:1,
-            price:price,
-        }
-    }
-    handleBasketCount();
-    listBasketElements();
-}
-
-function handleBasketCount(){
-    let product_count = Object.keys(products).length;
-
-    basket_count.innerHTML = product_count;
-
-    if(product_count > 0){
-        basket_count.style.display='inline';
+    
+    if(products[id]){
+        handleIncreement(id);
     }else{
-        basket_count.style.display='none';    
+        handleNewProduct(product,id);
     }
+    handleListProducts();
 }
 
-function listBasketElements(){
+function handleListProducts(){
+    products = handleGetProducts();
+
     list.innerHTML = '';
     for( let [key , product] of Object.entries(products)){
         list.innerHTML += `
@@ -76,42 +67,101 @@ function listBasketElements(){
         `;
     };
 
-    let removeFromBasket = document.querySelectorAll('.remove');
     let increement = document.querySelectorAll('.increement');
     let decreement = document.querySelectorAll('.decreement');
+    let removeFromBasket = document.querySelectorAll('.remove');
 
-    removeFromBasket.forEach(removed=>{
-        removed.addEventListener('click',(event)=>{
-            handleRemove(event.target.parentElement.getAttribute('data-id'));
-            handleBasketCount();
-        });
+    increement.forEach(item=>{
+        item.addEventListener('click',(e)=>{
+            handleIncreement(e.target.closest('.added-item').getAttribute('data-id'));
+        })
     });
 
-    increement.forEach(item =>{
-        item.addEventListener('click',(event)=>{
-            handleIncreement(event.target.closest('.added-item').getAttribute('data-id'));
-        });
+    decreement.forEach(item=>{
+        item.addEventListener('click',(e)=>{
+            handleDecreement(e.target.closest('.added-item').getAttribute('data-id'));
+        })
     });
 
-    decreement.forEach(item =>{
-        item.addEventListener('click',(event)=>{
-            handleDecreement(event.target.closest('.added-item').getAttribute('data-id'));
-            handleBasketCount();
-        });
+    removeFromBasket.forEach(item=>{
+        item.addEventListener('click',(e)=>{
+            handleRemove(e.target.closest('.added-item').getAttribute('data-id'));
+        })
     });
-} 
+    handleTotal();
+}
+function handleNewProduct(product,id){
+
+    let img = product.querySelector('img').getAttribute('src');
+    let price = product.querySelector('.price').innerText;
+    let title = product.querySelector('.product-title').innerText;
+
+    products[id] ={
+        title : title ,
+        price : price , 
+        img : img ,
+        count : 1,
+    };
+    handleSetProducts(products);
+    handleBasketCount();
+    handleListProducts();
+}
 
 function handleIncreement(id){
+    products = handleGetProducts();
+
     products[id].count +=1;
-    listBasketElements();
-}
-function handleDecreement(id){
-    if(products[id].count == 1){
-        delete products[id];
-    }else{
-        products[id].count -=1;
-    }
-    
-    listBasketElements();
+    handleSetProducts(products);
+    handleListProducts();
 }
 
+function handleDecreement(id){
+    products = handleGetProducts();
+    if(products[id].count>1){
+        products[id].count -=1;
+    }else{
+        delete products[id];
+    }
+    handleSetProducts(products);
+    handleListProducts();
+    handleBasketCount();
+}
+function handleRemove(id){
+    products = handleGetProducts();
+    
+    delete products[id];
+
+    handleSetProducts(products);
+    handleListProducts();
+    handleBasketCount();
+}
+
+function handleBasketCount(){
+    let productCount = Object.keys(handleGetProducts()).length;
+
+    basketCount.innerHTML = productCount;
+
+    if(productCount > 0){
+        basketCount.style.display='inline';
+    }else{
+        basketCount.style.display='none';    
+    }
+}
+
+function handleTotal(){
+    let productCount = Object.keys(handleGetProducts()).length;
+
+    let totalProductPrice = 0;
+    
+    for(let product of Object.values(handleGetProducts())){
+        totalProductPrice+= product.count * product.price;
+    };
+
+    total.innerHTML = totalProductPrice;
+
+    if(productCount > 0){
+        totalPrice.style.display='inline';
+    }else{
+        totalPrice.style.display='none';    
+    }
+}
